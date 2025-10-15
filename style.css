@@ -107,4 +107,15 @@ h2{ color:var(--bleu-noctulica); margin-bottom:1.5rem; text-transform:uppercase;
 /* Boutons précommande/contact */
 .btn-preco, .btn-contact{ display:inline-block; background-color:var(--bleu-noctulica); color:var(--blanc); text-decoration:none; padding:0.75rem 1.5rem; border-radius:20px; margin-top:1rem; font-weight:600; transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease; position:relative; overflow:hidden;}
 .btn-preco:hover, .btn-contact:hover{ background-color:var(--bleu-aquarelle-clair); transform:scale(1.05); box-shadow:0 0 15px #fff, 0 0 30px var(--plancton-light), 0 0 45px #99ccff; }
-.btn-preco::after, .btn-contact::af
+.btn-preco::after, .btn-contact::after{
+  content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(200,230,255,0.5) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(150,200,255,0.3) 1px, transparent 1px);
+  background-size:15px 15px, 30px 30px, 50px 50px; opacity:0; transition:opacity 0.5s ease; pointer-events:none;
+}
+.btn-preco:hover::after, .btn-contact:hover::after{ opacity:1; animation:moveStars 4s linear infinite; }
+@keyframes moveStars{0%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(5px,-5px) rotate(180deg);}100%{transform:translate(0,0) rotate(360deg);}}
+
+/* Footer */
+footer{ background-color:var(--bleu-noctulica); color:var(--blanc); padding:2rem 1rem; font-size:0.9rem; box-shadow:0 -4px 12px var(--ombre-forte); }
