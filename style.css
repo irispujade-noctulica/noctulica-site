@@ -4,12 +4,18 @@
   --sable: #d9c2a7;
   --blanc: #ffffff;
   --noir: #222;
-  --ombre: rgba(0, 0, 0, 0.1);
+  --ombre: rgba(0, 0, 0, 0.15);
+  --ombre-forte: rgba(0, 0, 0, 0.25);
 }
 
+/* Fond avec vagues discrètes */
 body {
   font-family: "Poppins", "Helvetica Neue", sans-serif;
   background-color: var(--sable);
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 70%);
+  background-size: 200px 200px;
   color: var(--noir);
   margin: 0;
   padding: 0;
@@ -21,19 +27,21 @@ header {
   padding: 3rem 1rem 2rem;
   background-color: var(--bleu-noctulica);
   color: var(--blanc);
-  border-bottom: 4px solid var(--blanc);
+  border-bottom: 6px solid var(--blanc);
+  box-shadow: 0 6px 20px var(--ombre-forte);
 }
 
 .logo {
   width: 120px;
   height: auto;
-  border-radius: 50%;
+  border-radius: 20%; /* angles moins ronds, plus dur */
   margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 2rem;
-  letter-spacing: 1px;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .tagline {
@@ -41,38 +49,42 @@ h1 {
   margin: 1rem auto;
   font-style: italic;
   line-height: 1.5;
+  color: #f1f1f1;
 }
 
 /* Sections */
 section {
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   max-width: 900px;
   margin: auto;
 }
 
 h2 {
   color: var(--bleu-noctulica);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .livres-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .livre {
   background: var(--blanc);
-  box-shadow: 0 2px 8px var(--ombre);
-  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--ombre-forte);
+  border-radius: 8px; /* moins rond pour effet dur */
   padding: 1.5rem;
   max-width: 250px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .livre:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 8px 20px var(--ombre-forte);
 }
 
 .btn-preco, .btn-contact {
@@ -81,19 +93,22 @@ h2 {
   color: var(--blanc);
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 25px;
+  border-radius: 20px;
   margin-top: 1rem;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-preco:hover, .btn-contact:hover {
   background-color: #0f2bbd;
+  transform: scale(1.05);
 }
 
 /* Footer */
 footer {
   background-color: var(--bleu-noctulica);
   color: var(--blanc);
-  padding: 1.5rem;
+  padding: 2rem 1rem;
   font-size: 0.9rem;
+  box-shadow: 0 -4px 12px var(--ombre-forte);
 }
