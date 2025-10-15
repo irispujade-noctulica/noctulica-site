@@ -1,55 +1,122 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noctulica Éditions</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <img src="logo.jpg" alt="Logo Noctulica Éditions" class="logo">
-    <h1>Noctulica Éditions</h1>
-    <h2>Maison d'édition jeunesse</h2>
-    <p class="tagline">
-      Comme le Noctulica qui illumine l’océan la nuit, nos albums jeunesse éclairent les zones d’ombre de la vie d’adulte et les rendent accessibles aux enfants.
-    </p>
-  </header>
+:root {
+  --bleu-noctulica: #050c3d; /* bleu très foncé presque marine */
+  --bleu-aquarelle-clair: #2b3ab5; /* touche plus claire pour l’effet aquarelle */
+  --sable: #d9c2a7;
+  --blanc: #ffffff;
+  --noir: #222;
+  --ombre: rgba(0, 0, 0, 0.15);
+  --ombre-forte: rgba(0, 0, 0, 0.25);
+}
 
-  <main>
-    <section id="livres">
-      <h2>Nos livres Céleste & Raphaël</h2>
-      <div class="livres-container">
-        <div class="livre">
-          <h3>Céleste & Raphaël : Où sont les couleurs du poisson ?</h3>
-          <p>Un album pour accompagner les enfants lors de la dépression d'un proche.</p>
-        </div>
-        <div class="livre">
-          <h3>Céleste & Raphaël : Où est partie l'étoile de mer ?</h3>
-          <p>Un album pour accompagner les enfants dans le deuil et le souvenir.</p>
-        </div>
-        <div class="livre">
-          <h3>Céleste & Raphaël : Où est passé l'amour ?</h3>
-          <p>Un album pour comprendre les séparations des parents et les nouveaux départs.</p>
-        </div>
-      </div>
-    </section>
+/* Fond beige grainé */
+body {
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  background-color: var(--sable);
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/grain.png'); /* texture grainée subtile */
+  color: var(--noir);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 
-    <section id="precommande">
-      <h2>Précommander</h2>
-      <p>Nos albums sont disponibles en précommande. Soutenez la création indépendante et recevez-les dès leur sortie.</p>
-      <a href="https://buy.stripe.com/test_link" class="btn-preco">Précommander maintenant</a>
-    </section>
+/* Header avec effet aquarelle */
+header {
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair));
+  background-size: 400% 400%;
+  animation: aquarelle 12s ease infinite;
+  color: var(--blanc);
+  border-bottom: 6px solid var(--blanc);
+  box-shadow: 0 6px 20px var(--ombre-forte);
+  position: relative;
+  overflow: hidden;
+}
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Une question, un partenariat ou une librairie intéressée ?</p>
-      <a href="mailto:contact@noctulicaeditions.fr" class="btn-contact">Nous écrire</a>
-    </section>
-  </main>
+@keyframes aquarelle {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-  <footer>
-    <p>© 2025 Noctulica Éditions — Tous droits réservés</p>
-  </footer>
-</body>
-</html>
+.logo {
+  width: 120px;
+  height: auto;
+  border-radius: 20%;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-style: italic;
+  line-height: 1.5;
+  color: #f1f1f1;
+}
+
+/* Sections */
+section {
+  padding: 4rem 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: var(--bleu-noctulica);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.livres-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.livre {
+  background: var(--blanc);
+  box-shadow: 0 4px 12px var(--ombre-forte);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 250px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.livre:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 8px 20px var(--ombre-forte);
+}
+
+.btn-preco, .btn-contact {
+  display: inline-block;
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-preco:hover, .btn-contact:hover {
+  background-color: var(--bleu-aquarelle-clair);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -4px 12px var(--ombre-forte);
+}
