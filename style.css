@@ -67,14 +67,13 @@ section {
   margin: auto;
 }
 
-h3 {
+h2 {
   color: var(--bleu-noctulica);
   margin-bottom: 1.5rem;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-h2 {
+h3 {
   color: var(--bleu-noctulica);
   margin-bottom: 1.5rem;
   text-transform: uppercase;
