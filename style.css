@@ -1,26 +1,26 @@
 :root {
-  --bleu-noctulica: #050c3d; /* bleu très foncé presque marine */
-  --bleu-aquarelle-clair: #2b3ab5; /* touche plus claire pour l’effet aquarelle */
+  --bleu-noctulica: #050c3d; /* bleu très foncé */
+  --bleu-aquarelle-clair: #2b3ab5; /* touche aquarelle */
   --sable: #d9c2a7;
   --blanc: #ffffff;
   --noir: #222;
   --ombre: rgba(0, 0, 0, 0.15);
   --ombre-forte: rgba(0, 0, 0, 0.25);
+  --plancton-light: #cce6ff;
 }
 
-/* Fond beige grainé */
+/* === Fond général avec texture granuleuse === */
 body {
   font-family: "Poppins", "Helvetica Neue", sans-serif;
   background-color: var(--sable);
-  background-image: 
-    url('https://www.transparenttextures.com/patterns/grain.png'); /* texture grainée subtile */
+  background-image: url('https://www.transparenttextures.com/patterns/grain.png');
   color: var(--noir);
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-/* Header avec effet aquarelle */
+/* === Header avec effet aquarelle animé === */
 header {
   padding: 3rem 1rem 2rem;
   background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair));
@@ -39,20 +39,28 @@ header {
   100% {background-position: 0% 50%;}
 }
 
-.logo {
+header .logo {
   width: 120px;
   height: auto;
   border-radius: 20%;
   margin-bottom: 1rem;
 }
 
-h1 {
-  font-size: 2.2rem;
+header h1 {
+  font-size: 2.4rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-.tagline {
+header h2 {
+  color: var(--blanc);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0.5rem 0 1rem;
+  letter-spacing: 1px;
+}
+
+header .tagline {
   max-width: 600px;
   margin: 1rem auto;
   font-style: italic;
@@ -60,7 +68,7 @@ h1 {
   color: #f1f1f1;
 }
 
-/* Sections */
+/* === Sections === */
 section {
   padding: 4rem 1rem;
   max-width: 900px;
@@ -70,16 +78,11 @@ section {
 h2 {
   color: var(--bleu-noctulica);
   margin-bottom: 1.5rem;
-  letter-spacing: 1px;
-}
-
-h3 {
-  color: var(--bleu-noctulica);
-  margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+/* === Cartes livres === */
 .livres-container {
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +94,7 @@ h3 {
   background: var(--blanc);
   box-shadow: 0 4px 12px var(--ombre-forte);
   border-radius: 8px;
-  padding: 1.2rem;
+  padding: 1.5rem;
   max-width: 250px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -101,23 +104,7 @@ h3 {
   box-shadow: 0 8px 20px var(--ombre-forte);
 }
 
-.btn-preco, .btn-contact {
-  display: inline-block;
-  background-color: var(--bleu-noctulica);
-  color: var(--blanc);
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
-  margin-top: 1rem;
-  font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn-preco:hover, .btn-contact:hover {
-  background-color: var(--bleu-aquarelle-clair);
-  transform: scale(1.05);
-}
-/* Boutons existants */
+/* === Boutons précommande et contact === */
 .btn-preco, .btn-contact {
   display: inline-block;
   background-color: var(--bleu-noctulica);
@@ -132,14 +119,13 @@ h3 {
   overflow: hidden;
 }
 
-/* Hover : effet "plancton lumineux" */
+/* Hover : plancton / étoiles phosphorescentes */
 .btn-preco:hover, .btn-contact:hover {
   background-color: var(--bleu-aquarelle-clair);
   transform: scale(1.05);
-  box-shadow: 0 0 15px #fff, 0 0 30px #cce6ff, 0 0 45px #99ccff;
+  box-shadow: 0 0 15px #fff, 0 0 30px var(--plancton-light), 0 0 45px #99ccff;
 }
 
-/* Particules étoiles / plancton avec ::after */
 .btn-preco::after, .btn-contact::after {
   content: "";
   position: absolute;
@@ -162,12 +148,13 @@ h3 {
   animation: moveStars 4s linear infinite;
 }
 
-/* Animation légère des étoiles */
 @keyframes moveStars {
   0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(5px, -5px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
 
-
-/* Footer */
+/* === Footer === */
 footer {
   background-color: var(--bleu-noctulica);
   color: var(--blanc);
