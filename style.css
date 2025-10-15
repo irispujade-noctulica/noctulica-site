@@ -1,0 +1,99 @@
+/* Palette inspirée du logo : bleu profond + fond sable */
+:root {
+  --bleu-noctulica: #1a40ff;
+  --sable: #d9c2a7;
+  --blanc: #ffffff;
+  --noir: #222;
+  --ombre: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  background-color: var(--sable);
+  color: var(--noir);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header */
+header {
+  padding: 3rem 1rem 2rem;
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  border-bottom: 4px solid var(--blanc);
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Sections */
+section {
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: var(--bleu-noctulica);
+  margin-bottom: 1rem;
+}
+
+.livres-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.livre {
+  background: var(--blanc);
+  box-shadow: 0 2px 8px var(--ombre);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 250px;
+  transition: transform 0.2s ease;
+}
+
+.livre:hover {
+  transform: translateY(-5px);
+}
+
+.btn-preco, .btn-contact {
+  display: inline-block;
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-preco:hover, .btn-contact:hover {
+  background-color: #0f2bbd;
+}
+
+/* Footer */
+footer {
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
