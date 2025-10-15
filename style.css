@@ -9,18 +9,50 @@
   --plancton-light: #cce6ff;
 }
 
-/* === Fond général avec texture granuleuse === */
+/* === Corps avec sable granuleux et vagues === */
 body {
   font-family: "Poppins", "Helvetica Neue", sans-serif;
-  background-color: var(--sable);
-  background-image: url('https://www.transparenttextures.com/patterns/grain.png');
   color: var(--noir);
   margin: 0;
   padding: 0;
   text-align: center;
+
+  /* Fond sable granuleux */
+  background: var(--sable);
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/grain.png'), 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: auto, 20px 20px;
+
+  position: relative;
+  overflow: hidden;
 }
 
-/* === Header === */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0 2px,
+    transparent 2px 10px
+  );
+  animation: waves 15s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+@keyframes waves {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  50% { transform: translateX(20px) translateY(10px) rotate(10deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* === Header avec effet aquarelle === */
 .header-main {
   padding: 3rem 1rem 2rem;
   background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair));
@@ -31,6 +63,7 @@ body {
   box-shadow: 0 6px 20px var(--ombre-forte);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 @keyframes aquarelle {
@@ -148,4 +181,22 @@ h2 {
 }
 
 .btn-preco:hover::after,
-.
+.btn-contact:hover::after {
+  opacity: 1;
+  animation: moveStars 4s linear infinite;
+}
+
+@keyframes moveStars {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(5px, -5px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* === Footer === */
+footer {
+  background-color: var(--bleu-noctulica);
+  color: var(--blanc);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -4px 12px var(--ombre-forte);
+}
