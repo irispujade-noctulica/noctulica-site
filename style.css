@@ -1,6 +1,6 @@
 :root {
-  --bleu-noctulica: #050c3d; /* bleu très foncé */
-  --bleu-aquarelle-clair: #2b3ab5; /* touche aquarelle */
+  --bleu-noctulica: #050c3d;
+  --bleu-aquarelle-clair: #2b3ab5;
   --sable: #d9c2a7;
   --blanc: #ffffff;
   --noir: #222;
@@ -20,8 +20,8 @@ body {
   text-align: center;
 }
 
-/* === Header avec effet aquarelle animé === */
-header {
+/* === Header === */
+.header-main {
   padding: 3rem 1rem 2rem;
   background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair));
   background-size: 400% 400%;
@@ -39,20 +39,25 @@ header {
   100% {background-position: 0% 50%;}
 }
 
-header .logo {
+.header-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+.header-main .logo {
   width: 120px;
   height: auto;
   border-radius: 20%;
   margin-bottom: 1rem;
 }
 
-header h1 {
+.header-main h1 {
   font-size: 2.4rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-header h2 {
+.header-main h2 {
   color: var(--blanc);
   font-size: 1.2rem;
   font-weight: 400;
@@ -60,7 +65,7 @@ header h2 {
   letter-spacing: 1px;
 }
 
-header .tagline {
+.header-main .tagline {
   max-width: 600px;
   margin: 1rem auto;
   font-style: italic;
@@ -100,8 +105,8 @@ h2 {
 }
 
 .livre:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  box-shadow: 0 8px 20px var(--ombre-forte);
+  transform: translateY(-8px) rotate(-1deg) scale(1.02);
+  box-shadow: 0 12px 25px var(--ombre-forte);
 }
 
 /* === Boutons précommande et contact === */
@@ -119,7 +124,7 @@ h2 {
   overflow: hidden;
 }
 
-/* Hover : plancton / étoiles phosphorescentes */
+/* Hover : plancton phosphorescent */
 .btn-preco:hover, .btn-contact:hover {
   background-color: var(--bleu-aquarelle-clair);
   transform: scale(1.05);
@@ -143,22 +148,4 @@ h2 {
 }
 
 .btn-preco:hover::after,
-.btn-contact:hover::after {
-  opacity: 1;
-  animation: moveStars 4s linear infinite;
-}
-
-@keyframes moveStars {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(5px, -5px) rotate(180deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* === Footer === */
-footer {
-  background-color: var(--bleu-noctulica);
-  color: var(--blanc);
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  box-shadow: 0 -4px 12px var(--ombre-forte);
-}
+.
