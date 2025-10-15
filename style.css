@@ -1,202 +1,110 @@
 :root {
   --bleu-noctulica: #050c3d;
   --bleu-aquarelle-clair: #2b3ab5;
+  --bleu-logo: #1a40ff;
   --sable: #d9c2a7;
   --blanc: #ffffff;
   --noir: #222;
-  --ombre: rgba(0, 0, 0, 0.15);
-  --ombre-forte: rgba(0, 0, 0, 0.25);
+  --ombre: rgba(0,0,0,0.15);
+  --ombre-forte: rgba(0,0,0,0.25);
   --plancton-light: #cce6ff;
 }
 
-/* === Corps avec sable granuleux et vagues === */
+/* === Corps avec sable granuleux + vagues aquarelle === */
 body {
-  font-family: "Poppins", "Helvetica Neue", sans-serif;
-  color: var(--noir);
-  margin: 0;
-  padding: 0;
-  text-align: center;
-
-  /* Fond sable granuleux */
-  background: var(--sable);
-  background-image: 
-    url('https://www.transparenttextures.com/patterns/grain.png'), 
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: auto, 20px 20px;
-
+  font-family: "Poppins","Helvetica Neue",sans-serif;
+  margin:0; padding:0; color:var(--noir); text-align:center;
+  background: 
+    url('https://www.transparenttextures.com/patterns/grain.png') repeat,
+    linear-gradient(135deg, #d9c2a7 0%, #f0e1d2 50%, #d9c2a7 100%);
+  background-size: auto, cover;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
+/* Vagues aquarelle animées via pseudo-element */
 body::before {
-  content: "";
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05) 0 2px,
-    transparent 2px 10px
-  );
-  animation: waves 15s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.2;
+  content:"";
+  position:fixed;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 1px, transparent 15px);
+  opacity:0.15;
+  animation:waves 20s linear infinite;
+  pointer-events:none; z-index:0;
 }
 
 @keyframes waves {
-  0% { transform: translateX(0) translateY(0) rotate(0deg); }
-  50% { transform: translateX(20px) translateY(10px) rotate(10deg); }
-  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  0%{transform:translate(0,0) rotate(0deg);}
+  50%{transform:translate(20px,10px) rotate(5deg);}
+  100%{transform:translate(0,0) rotate(0deg);}
 }
 
-/* === Header avec effet aquarelle === */
+/* === Header aquarelle === */
 .header-main {
-  padding: 3rem 1rem 2rem;
-  background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair));
-  background-size: 400% 400%;
-  animation: aquarelle 12s ease infinite;
-  color: var(--blanc);
-  border-bottom: 6px solid var(--blanc);
-  box-shadow: 0 6px 20px var(--ombre-forte);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  padding:3rem 1rem 2rem;
+  color:var(--blanc);
+  border-bottom:6px solid var(--blanc);
+  box-shadow:0 6px 20px var(--ombre-forte);
+  position:relative; overflow:hidden; z-index:1;
+  background: linear-gradient(135deg, var(--bleu-noctulica), var(--bleu-aquarelle-clair), var(--bleu-noctulica));
+  background-size:600% 600%;
+  animation:aquarelle 20s ease infinite;
 }
 
-@keyframes aquarelle {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+@keyframes aquarelle{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-.header-content {
-  max-width: 800px;
-  margin: auto;
+.header-content { max-width:800px; margin:auto; position:relative; z-index:2; }
+
+.header-main .logo { width:120px; height:auto; border-radius:20%; margin-bottom:1rem; }
+.header-main h1 { font-size:2.4rem; letter-spacing:2px; text-transform:uppercase; }
+.header-main h2 { color:var(--blanc); font-size:1.2rem; font-weight:400; margin:0.5rem 0 1rem; letter-spacing:1px; }
+.header-main .tagline { max-width:600px; margin:1rem auto; font-style:italic; line-height:1.5; color:#f1f1f1; }
+
+/* === Poissons aquarelle multiples === */
+.poissons{ position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:visible; z-index:1; }
+.poisson{ position:absolute; width:100px; height:50px; animation:nager linear infinite; }
+
+.poisson:nth-child(1){ top:15%; left:-120px; animation-duration:18s; }
+.poisson:nth-child(2){ top:35%; left:-150px; animation-duration:25s; }
+.poisson:nth-child(3){ top:55%; left:-100px; animation-duration:22s; }
+
+@keyframes nager{
+  0%{transform:translateX(0) translateY(0) rotate(0deg);}
+  25%{transform:translateX(20vw) translateY(-10px) rotate(10deg);}
+  50%{transform:translateX(40vw) translateY(10px) rotate(-10deg);}
+  75%{transform:translateX(60vw) translateY(-5px) rotate(5deg);}
+  100%{transform:translateX(100vw) translateY(0) rotate(0deg);}
 }
 
-.header-main .logo {
-  width: 120px;
-  height: auto;
-  border-radius: 20%;
-  margin-bottom: 1rem;
+/* === Plancton phosphorescent aléatoire sur header === */
+.plancton{ position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2; }
+.plancton::before{
+  content:"";
+  position:absolute; width:5px; height:5px; background:#cce6ff; border-radius:50%;
+  animation: scintille linear infinite; top:20%; left:30%; opacity:0.7;
 }
-
-.header-main h1 {
-  font-size: 2.4rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.plancton::after{
+  content:""; position:absolute; width:3px; height:3px; background:#99ccff; border-radius:50%;
+  animation: scintille2 linear infinite; top:50%; left:70%; opacity:0.5;
 }
-
-.header-main h2 {
-  color: var(--blanc);
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0.5rem 0 1rem;
-  letter-spacing: 1px;
-}
-
-.header-main .tagline {
-  max-width: 600px;
-  margin: 1rem auto;
-  font-style: italic;
-  line-height: 1.5;
-  color: #f1f1f1;
-}
+@keyframes scintille{0%{opacity:0.3;}50%{opacity:1;}100%{opacity:0.3;}}
+@keyframes scintille2{0%{opacity:0.2;}50%{opacity:0.9;}100%{opacity:0.2;}}
 
 /* === Sections === */
-section {
-  padding: 4rem 1rem;
-  max-width: 900px;
-  margin: auto;
-}
+section{ padding:4rem 1rem; max-width:900px; margin:auto; }
+h2{ color:var(--bleu-noctulica); margin-bottom:1.5rem; text-transform:uppercase; letter-spacing:1px; }
 
-h2 {
-  color: var(--bleu-noctulica);
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+/* Cartes livres */
+.livres-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem; }
+.livre{ background:var(--blanc); box-shadow:0 4px 12px var(--ombre-forte); border-radius:8px; padding:1.5rem; max-width:250px; transition: transform 0.2s ease, box-shadow 0.2s ease;}
+.livre:hover{ transform:translateY(-8px) rotate(-1deg) scale(1.02); box-shadow:0 12px 25px var(--ombre-forte); }
 
-/* === Cartes livres === */
-.livres-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-}
-
-.livre {
-  background: var(--blanc);
-  box-shadow: 0 4px 12px var(--ombre-forte);
-  border-radius: 8px;
-  padding: 1.5rem;
-  max-width: 250px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.livre:hover {
-  transform: translateY(-8px) rotate(-1deg) scale(1.02);
-  box-shadow: 0 12px 25px var(--ombre-forte);
-}
-
-/* === Boutons précommande et contact === */
-.btn-preco, .btn-contact {
-  display: inline-block;
-  background-color: var(--bleu-noctulica);
-  color: var(--blanc);
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
-  margin-top: 1rem;
-  font-weight: 600;
-  transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hover : plancton phosphorescent */
-.btn-preco:hover, .btn-contact:hover {
-  background-color: var(--bleu-aquarelle-clair);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #fff, 0 0 30px var(--plancton-light), 0 0 45px #99ccff;
-}
-
-.btn-preco::after, .btn-contact::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
-                    radial-gradient(circle, rgba(200,230,255,0.5) 1px, transparent 1px),
-                    radial-gradient(circle, rgba(150,200,255,0.3) 1px, transparent 1px);
-  background-size: 15px 15px, 30px 30px, 50px 50px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.btn-preco:hover::after,
-.btn-contact:hover::after {
-  opacity: 1;
-  animation: moveStars 4s linear infinite;
-}
-
-@keyframes moveStars {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(5px, -5px) rotate(180deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* === Footer === */
-footer {
-  background-color: var(--bleu-noctulica);
-  color: var(--blanc);
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  box-shadow: 0 -4px 12px var(--ombre-forte);
-}
+/* Boutons précommande/contact */
+.btn-preco, .btn-contact{ display:inline-block; background-color:var(--bleu-noctulica); color:var(--blanc); text-decoration:none; padding:0.75rem 1.5rem; border-radius:20px; margin-top:1rem; font-weight:600; transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease; position:relative; overflow:hidden;}
+.btn-preco:hover, .btn-contact:hover{ background-color:var(--bleu-aquarelle-clair); transform:scale(1.05); box-shadow:0 0 15px #fff, 0 0 30px var(--plancton-light), 0 0 45px #99ccff; }
+.btn-preco::after, .btn-contact::af
